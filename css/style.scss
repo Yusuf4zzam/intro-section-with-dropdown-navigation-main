@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap");
+
+$Almost-White: hsl(0, 0%, 98%);
+$Medium-Gray: hsl(0, 0%, 41%);
+$Almost-Black: hsl(0, 0%, 8%);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Epilogue", sans-serif;
+  background: $Almost-White;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+// Overlay Box
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.5s;
+  &.active {
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+// Start Header Rules
+.header {
+  padding: 20px 0;
+  .container {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      margin-right: 50px;
+    }
+
+    .toggle-button {
+      display: none;
+      cursor: pointer;
+    }
+
+    .nav {
+      width: 100%;
+
+      > ul {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .close-button {
+          display: none;
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          cursor: pointer;
+        }
+
+        .lists,
+        .register {
+          display: flex;
+          gap: 30px;
+
+          > li {
+            svg {
+              margin-left: 4px;
+            }
+            &:hover {
+              color: $Almost-Black;
+            }
+          }
+
+          li {
+            position: relative;
+            list-style: none;
+            font-size: 15px;
+            color: $Medium-Gray;
+            cursor: pointer;
+            transition: 0.3s;
+
+            .left {
+              left: 0 !important;
+            }
+
+            ul {
+              width: max-content;
+              position: absolute;
+              top: calc(100% + 15px);
+              right: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              padding: 20px;
+              border-radius: 10px;
+              background: #fff;
+              cursor: default !important;
+              box-shadow: 0 0 10px rgb(230, 230, 230);
+              display: none;
+
+              &.active {
+                display: flex;
+              }
+
+              li {
+                a {
+                  display: flex;
+                  svg {
+                    width: 20px;
+                  }
+                  p {
+                    margin-left: 10px;
+                  }
+                }
+              }
+            }
+
+            a {
+              text-decoration: none;
+              color: $Medium-Gray;
+              transition: 0.3s;
+              &:hover {
+                color: $Almost-Black;
+              }
+            }
+          }
+        }
+
+        .register {
+          li:last-of-type {
+            a {
+              padding: 10px;
+              border: 1px solid $Medium-Gray;
+              border-radius: 10px;
+              &:hover {
+                border: 1px solid $Almost-Black;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Start Slider Rules
+.slider {
+  position: relative;
+  margin: 70px auto 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  z-index: 1;
+
+  .image-box {
+    width: 40%;
+    img {
+      width: 100%;
+      max-height: 400px;
+    }
+  }
+
+  .content {
+    width: 50%;
+    h1 {
+      color: $Almost-Black;
+      font-weight: 700;
+      font-size: 5em;
+    }
+
+    p {
+      width: 85%;
+      margin: 30px 0;
+      line-height: 1.5;
+      font-size: 18px;
+      color: $Medium-Gray;
+    }
+
+    a {
+      display: inline-block;
+      text-align: center;
+      width: 150px;
+      font-size: 15px;
+      font-weight: 700;
+      color: $Medium-Gray;
+      padding: 10px;
+      border: 1px solid $Medium-Gray;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: 0.3s;
+      &:hover {
+        color: $Almost-Black;
+        border: 1px solid $Almost-Black;
+      }
+    }
+  }
+}
+
+// Create Responsive Deisgn Rules
+@media (max-width: 767px) {
+  .header {
+    .container {
+      justify-content: space-between;
+    }
+    .toggle-button {
+      display: block !important;
+    }
+    .nav {
+      width: 50% !important;
+      position: fixed;
+      height: 100%;
+      background: #fff;
+      top: 0;
+      right: -50%;
+      z-index: 99999;
+      overflow: auto;
+      transition: 0.3s;
+
+      &.active {
+        right: 0;
+      }
+
+      .close-button {
+        display: block !important;
+      }
+
+      > ul {
+        flex-direction: column;
+        gap: 50px;
+        padding: 70px 20px 0;
+
+        li {
+          ul {
+            width: 100% !important;
+            position: static !important;
+            margin-top: 10px;
+            background: none !important;
+            box-shadow: none !important;
+            li {
+              border-bottom: 1px solid $Medium-Gray;
+              a {
+                padding-bottom: 10px;
+              }
+            }
+          }
+        }
+
+        > div {
+          flex-direction: column;
+        }
+
+        .register {
+          text-align: center;
+
+          li {
+            a {
+              display: inline-block;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Start Slider Rules
+  .slider {
+    width: 100% !important;
+    margin: 30px 0 !important;
+    .image-box {
+      order: 1;
+    }
+    .content {
+      padding: 0 15px;
+      margin-top: 20px;
+      order: 2;
+      text-align: center;
+      h1 {
+        font-size: 40px;
+      }
+      p {
+        width: 100% !important;
+      }
+    }
+
+    .image-box,
+    .content {
+      width: 100% !important;
+    }
+  }
+}
+
+@media (min-width: 767px) {
+  .overlay {
+    opacity: 0;
+    &.active {
+      opacity: 0;
+    }
+  }
+}
