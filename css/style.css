@@ -245,8 +245,22 @@ body {
 }
 
 .slider .content a:hover {
-  color: #141414;
-  border: 1px solid #141414;
+  color: #fff;
+  background: #141414;
+}
+
+.slider .content .testmonials {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
 }
 
 @media (max-width: 767px) {

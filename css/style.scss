@@ -204,9 +204,17 @@ body {
       text-decoration: none;
       transition: 0.3s;
       &:hover {
-        color: $Almost-Black;
-        border: 1px solid $Almost-Black;
+        color: #fff;
+        background: $Almost-Black;
       }
+    }
+
+    .testmonials {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
     }
   }
 }
